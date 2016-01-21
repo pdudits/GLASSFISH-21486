@@ -6,7 +6,6 @@
 package fish.payara.test.extpc.entity.boundary;
 
 import fish.payara.test.extpc.entity.Parent;
-import fish.payara.test.extpc.entity.StuffAttribute;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -51,6 +50,6 @@ public class ParentEditService {
     }
 
     private void findAttributes() {
-        mgr.createNamedQuery("StuffAttribute.all", StuffAttribute.class).getResultList();
+        mgr.createNamedQuery("Parent.otherIds", Parent.class).setParameter("id", parent.getId()).getResultList();
     }
 }
