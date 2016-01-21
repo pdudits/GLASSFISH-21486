@@ -5,13 +5,8 @@
  */
 package fish.payara.test.extpc.entity.boundary;
 
-import fish.payara.test.extpc.entity.Child;
 import fish.payara.test.extpc.entity.Parent;
-import fish.payara.test.extpc.entity.Stuff;
 import fish.payara.test.extpc.entity.StuffAttribute;
-import java.util.ArrayList;
-import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;

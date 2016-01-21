@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
  * @author UI187816
  */
 @NamedQueries({
-@NamedQuery(name = "StuffAttribute.byStuffId", query = "select sa from StuffAttribute sa where sa.stuff.id = :id"),
 @NamedQuery(name = "StuffAttribute.all", query = "select sa from StuffAttribute sa")
 })
 @Entity
@@ -25,7 +24,5 @@ public class StuffAttribute {
     @GeneratedValue
     @Id
     private long id;
-    
-    @ManyToOne
-    Stuff stuff;
+
 }
