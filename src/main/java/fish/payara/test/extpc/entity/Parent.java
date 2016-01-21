@@ -24,31 +24,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Entity
 public class Parent {
     @Id
+    @GeneratedValue
     private long id;
     
     @OneToMany(mappedBy = "parent", cascade = { CascadeType.REFRESH, CascadeType.REMOVE })
     //@OrderBy("name")
     private List<Child> children;
     
-    @OneToOne
-    @PrimaryKeyJoinColumn(name = "stuff_id", referencedColumnName = "ID")
-    private Stuff stuff;       
-    
-    protected Parent() {
-        
-    }
-    
-    public Parent(Stuff s) {
-        this.stuff = s;
-    }
-    
-    @PrePersist
-    void updateId() {
-        if (id == 0) {
-            id = stuff.getId();
-        }
-    }
-    
+         
     public void addChild(Child c) {
         if (children == null) {
             children = new ArrayList<>();
@@ -74,7 +57,4 @@ public class Parent {
         return id;
     }
 
-    public Stuff getStuff() {
-        return stuff;
-    }
 }

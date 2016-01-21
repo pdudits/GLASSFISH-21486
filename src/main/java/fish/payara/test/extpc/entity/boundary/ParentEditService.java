@@ -30,38 +30,15 @@ public class ParentEditService {
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     EntityManager mgr;
 
-    @EJB
-    StuffService stuff;
-
     private Parent parent;
-
-    private List<Child> newChildren;
 
     public void setParent(long parentId) {
         this.parent = mgr.find(Parent.class, parentId);
-        newChildren = new ArrayList<>();
         assertManaged();
-        findAttributes(parent.getStuff());
+        findAttributes();
         assertManaged();
     }
 
-    public Child addChild() {
-        Child child = new Child(stuff.create(), this.parent);
-        newChildren.add(child);
-        parent.addChild(child);
-        return child;
-    }
-
-    public int childrenCount() {
-        return newChildren == null ? 0 : newChildren.size();
-    }
-
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-    public void save() {
-        for (Child child : newChildren) {
-            mgr.persist(child);
-        }
-    }
 
     /**
      * The find method (provided it is invoked without a lock or invoked with
@@ -78,7 +55,7 @@ public class ParentEditService {
         }
     }
 
-    private void findAttributes(Stuff s) {
-        mgr.createNamedQuery("StuffAttribute.byStuffId", StuffAttribute.class).setParameter("id", s.getId()).getResultList();
+    private void findAttributes() {
+        mgr.createNamedQuery("StuffAttribute.all", StuffAttribute.class).getResultList();
     }
 }

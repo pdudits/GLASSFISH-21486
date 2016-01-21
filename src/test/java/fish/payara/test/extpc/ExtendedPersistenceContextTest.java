@@ -79,13 +79,6 @@ public class ExtendedPersistenceContextTest {
     public void extendedPcTest() {
         Parent p = parentService.create();
         editService.setParent(p.getId());
-        assertEquals(0, editService.childrenCount());
-        Child c1 = editService.addChild();
-        Child c2 = editService.addChild();
-        editService.save();
-        assertEquals(2, editService.childrenCount());
-        assertEquals(2, parentService.childrenCount(p));
-        parentService.deleteParent(p);
     }
 
 }

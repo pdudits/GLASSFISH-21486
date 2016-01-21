@@ -25,7 +25,7 @@ public class ParentService {
     StuffService stuff;
     
     public Parent create() {
-        Parent p = new Parent(stuff.create());
+        Parent p = new Parent();
         mgr.persist(p);
         return p;
     }
