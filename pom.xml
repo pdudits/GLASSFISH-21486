@@ -12,11 +12,24 @@
     </properties>
     
     <dependencies>
-        <dependency>
+        <!-- Fails in Payara -->
+<!--        <dependency>
             <groupId>fish.payara.extras</groupId>
             <artifactId>payara-embedded-all</artifactId>
             <version>4.1.1.154</version>
-        </dependency>
+        </dependency>-->
+        <!-- Fails in GF 4 -->
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>4.1.1</version>
+        </dependency>      
+        <!-- Passes in GF 3-->       
+        <!--        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.2.2</version>
+        </dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
